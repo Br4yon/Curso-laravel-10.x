@@ -22,7 +22,12 @@ class SupportController extends Controller
 
     public function store(Request $request)
     {
+        $data = $request->all();
+        Support::create([
+            'subject' => $data['subject'],
+            'body' => $data['body'],
+        ]);
 
-        dd($request->all());
+        return redirect()->route('supports.index');
     }
 }
